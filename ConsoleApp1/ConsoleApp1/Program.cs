@@ -1,0 +1,52 @@
+﻿using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+namespace ConsoleApp1
+{
+    namespace Program
+    {
+        public static void Main(string[] args)
+        {
+            var remoteForSend = new IPEndPoint(IPAddress.Any, 25000);
+            SendUp(remoteForSend);
+        }
+        private static void SendUp(IPEndPoint remoteForSend)
+        {
+            Socket remoteSocket = new Socket(AddressFamily.interNetwork, SocketType.Dgram, ProtocolType.Udp);
+            var receiver = new IPEndPoint(IPAddress.Any, 0);
+            EndPoint remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            EndPoint remoteForReceiver = (EndPoint)receiver;
+            while (Console.ReadLine() != "q")
+            {
+                string data = Console.ReadLine();
+                if (data == "q") break;
+                else
+                {
+                    //보내기
+                    //byte[] bytes = Encoding.UTF8.GetBytes(data);
+                    //remoteSocket.SendTo(buffer, buffer.Length, SocketFlags.None, remoteForSend);//보낼곳을 바로 기입
+
+                    //받기
+                    byte[] buffer2 = new byte[1024];
+                    int recvbyte = remoteSocket.ReceiveFrom(buffer2, ref remoteForReceive);
+                    if (recvbyte >= 0) break;
+                    remoteSocket.ReceiveFrom(buffer2, ref remoteForReceive);
+                    
+                }
+            }
+            string firstMessage = "Hello World";
+
+            byte[] buffer = Encording.UTF8.GetBytes(firstMessage);
+            //send는 tcp용
+            remoteSocket.SendTo(buffer, buffer.Length, SocketFlags.None, remoteForSend);//보낼곳을 바로 기입
+
+
+            //byte[] buffer2 = new byte[1024];
+            //remoteSocket.ReceiveFrom(buffer2, ref remoteForReceive);
+            //Console.WriteLine($"First rev from{remoteForReceive.ToString()}");
+            //Console.WriteLine($"{Encording.UTF8.GetString(buffer2)}");
+
+        }
+    }
+}

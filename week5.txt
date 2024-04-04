@@ -1,0 +1,32 @@
+winR -> cmd OR powershell
+ipconfig, ipconfig /all, ipconfig /displaydns
+IPv4, subnet, Gateway, DNS mac address
+netstat, nestat -a, netstat -r
+nslookup
+ping -a, ping 으로 원하는 주소에 패킷을 날려 연결을 확인할 수 있다
+arp -a, arp -d
+arp는 한번이라도 연결된 인터넷의 주소를 띄워주고 -d로 그 기록을 지울수 있다
+A class와 B class 는 패킷 사이즈의 차이
+D class는 멀티캐스팅용 주소
+1대1은 유니캐스팅, 그룹으로 하는건 멀티캐스팅, 뿌리는건 브로드캐스팅
+멀티캐스팅의 주소 중 일부는 할당받아서 사용하는 주소
+.NET Framework 6.0 OR 8.0
+최상위문 사용 안함
+SendHttpRequest(new Uri("http://127.0.0.1),25000);
+var remote = new IPEndPoint(IPAddress.Any,0);
+
+Socket socket = new Socket(AddressFamily.interNetwork, SocketType.Dgram, ProtocolType.Udp)
+var receiver = new IPEndPoint(IPAddress.Any, 0);
+EndPoint remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+EndPoint remoteForReceiver = (EndPoint)receiver;
+
+string firstMessage = "Hello World";
+
+byte[] buffer = Encording.UTF8.GetBytes(firstMessage);
+//send는 tcp용
+remoteSocket.SentTo(buffer,buffer.Length, SocketFlags.None, remoteForSend);//보낼곳을 바로 기입
+byte[] buffer2 = new byte[1024];
+remoteSocket.ReceiveFrom(buffer2, ref remoteForReceive);
+
+console.WriteLine($"First rev from{remoteForReceive.ToString()}");
+console.S\WriteLine($"{Encording.UTF8.GetString(buffer2)}");
