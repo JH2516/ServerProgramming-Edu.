@@ -20,6 +20,7 @@ namespace console_udp_03
             Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             // send setsocketoption
+            // 라우터를 몇번까지 거치게 할 것인가
             sock.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastTimeToLive, 1);
 
 

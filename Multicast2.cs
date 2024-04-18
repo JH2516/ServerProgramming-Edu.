@@ -21,6 +21,7 @@ namespace console_udp_03_1
             Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             //recv setsocketoption
+            // ReuseAddress는 프로그램이 죽었을때 해당 포트가 죽었기에 다시 사용할 수 있게 처리한다(그게 싫으면 false로 해두면 된다)
             sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
             sock.Bind(new IPEndPoint(IPAddress.Any, remoteEP.Port));
@@ -29,6 +30,7 @@ namespace console_udp_03_1
             // 멀티캐스트 그룹 가입
             var mcastOption = new MulticastOption(IPAddress.Parse(remoteEP.Address.ToString()), IPAddress.Any);
             // 멀티캐스용 소켓 옵션 변경
+            // 멀티캐스트 할때 이 주소에 가입할테니 이 주소는 받겠다고 설정한다
             sock.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, mcastOption);
             ///
 
