@@ -1,0 +1,2 @@
+C:\Users\YUHAN\Desktop\ServerPrograming\정리\console_tcpClient_fixed_model\console_tcpClient_fixed_model\obj\Debug\console_tcpClient_fixed_model.csproj.AssemblyReference.cache
+C:\Users\YUHAN\Desktop\ServerPrograming\정리\console_tcpClient_fixed_model\console_tcpClient_fixed_model\obj\Debug\console_tcpClient_fixed_model.csproj.CoreCompileInputs.cache
